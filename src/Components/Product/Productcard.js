@@ -17,11 +17,16 @@ const Productcard = () => {
           </h2>
           <p>If a dog chews shoes whose shoes does he choose?</p>
           <div class="card-actions justify-start">
-            <div class="badge badge-outline">Price: $120</div>
+            <div class="badge badge-outline">Price: $<span>120</span></div>
           </div>
           <div className="card-actions flex justify-between">
-            <div >
-              <div class="badge badge-outline badge-secondary">Supplier: AYT</div>
+            <div className="flex flex-col space-y-2">
+              <div class="badge badge-outline badge-secondary">Supplier: <span className="px-2">AYT</span></div>
+              <div>
+              <div>
+              <span class="badge badge-outline badge-success badge-lg">Quantity:  <span className="px-2"> 20</span></span>
+              </div>  
+              </div>
             </div>
             <div>
               <button class="btn btn-primary">Buy Now</button>
