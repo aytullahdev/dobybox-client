@@ -1,13 +1,13 @@
 import React from "react";
-
-const Navbarnav = () => {
+import { Link } from "react-router-dom";
+const Navbar = () => {
   return (
     <div className="px-1 lg:px-10  py-2">
       <div class="navbar bg-base-100 rounded-lg shadow-md">
         <div class="flex-1">
-          <a class="btn outline-none border-none normal-case text-xl bg-blue-400 text-white">
+          <Link to="/" class="btn outline-none border-none normal-case text-xl bg-blue-400 text-white">
             DOBYBOX
-          </a>
+          </Link>
         </div>
        
         <div>
@@ -35,10 +35,10 @@ const Navbarnav = () => {
                   class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
                 >
                   <li>
-                    <a>Home</a>
+                    <Link to="/">Home</Link>
                   </li>
                   <li>
-                    <a>Inventory</a>
+                    <Link to="/inventory">Inventory</Link>
                   </li>
                 </ul>
               </div>
@@ -46,10 +46,10 @@ const Navbarnav = () => {
             <div class="navbar-center hidden lg:flex">
               <ul class="menu menu-horizontal p-0">
                 <li>
-                  <a>Home</a>
+                  <Link to="/">Home</Link>
                 </li>
                 <li>
-                  <a>Inventory</a>
+                  <Link to="/inventory">Inventory</Link>
                 </li>
               </ul>
             </div>
@@ -88,13 +88,13 @@ const Navbarnav = () => {
               class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a class="justify-between">
+                <Link to="/dashboard" class="justify-between">
                   Dashboard
                   <span class="badge">New</span>
-                </a>
+                </Link>
               </li>
               <li>
-                <a>Settings</a>
+                <Link to="/">Settings</Link>
               </li>
               <li>
                 <a>Logout</a>
@@ -107,4 +107,4 @@ const Navbarnav = () => {
   );
 };
 
-export default Navbarnav;
+export default Navbar;

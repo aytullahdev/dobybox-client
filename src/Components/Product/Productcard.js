@@ -29,7 +29,7 @@ const Productcard = () => {
               </div>
             </div>
             <div>
-              <button class="btn btn-primary">Buy Now</button>
+              <button class="btn btn-primary">UPDATE</button>
             </div>
           </div>
         </div>
