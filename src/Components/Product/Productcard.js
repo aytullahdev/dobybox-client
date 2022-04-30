@@ -8,6 +8,7 @@ const Productcard = ({name,id,desc,price,quan,supplier,img}) => {
           <img
             src={img}
             alt={name}
+            className="h-60"
           />
         </figure>
         <div class="card-body">
