@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Productcard = ({name,id,desc,price,quan,supplier,img}) => {
   return (
     <div className="mx-auto">
-      <div class="card w-96 bg-base-100 shadow-xl">
+      <div className="card w-96 bg-base-100 shadow-xl">
         <figure>
           <img
             src={img}
@@ -11,26 +11,26 @@ const Productcard = ({name,id,desc,price,quan,supplier,img}) => {
             className="h-60"
           />
         </figure>
-        <div class="card-body">
-          <h2 class="card-title">
+        <div className="card-body">
+          <h2 className="card-title">
             {name}!
-            <div class="badge badge-secondary">NEW</div>
+            <div className="badge badge-secondary">NEW</div>
           </h2>
           <p>{desc}?</p>
-          <div class="card-actions justify-start">
-            <div class="badge badge-outline">Price: $<span>{price}</span></div>
+          <div className="card-actions justify-start">
+            <div className="badge badge-outline">Price: $<span>{price}</span></div>
           </div>
           <div className="card-actions flex justify-between">
             <div className="flex flex-col space-y-2">
-              <div class="badge badge-outline badge-secondary">Supplier: <span className="px-2">{supplier}</span></div>
+              <div className="badge badge-outline badge-secondary">Supplier: <span className="px-2">{supplier}</span></div>
               <div>
               <div>
-              <span class="badge badge-outline badge-success badge-lg">Quantity:  <span className="px-2"> {quan}</span></span>
+              <span className="badge badge-outline badge-success badge-lg">Quantity:  <span className="px-2"> {quan}</span></span>
               </div>  
               </div>
             </div>
             <div>
-              <Link to={`inventory/${id}`} class="btn btn-primary">UPDATE</Link>
+              <Link to={`inventory/${id}`} className="btn btn-primary">UPDATE</Link>
             </div>
           </div>
         </div>

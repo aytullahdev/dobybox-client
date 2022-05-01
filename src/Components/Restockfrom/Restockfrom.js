@@ -5,7 +5,7 @@ const Restockfrom = ({restockItem}) => {
     const [newquantity, setNewquantity] = useState(0)
     return (
         <div className='py-4 flex justify-center'>
-            <input type="number" min={0} placeholder="New Quantity" class="input w-full max-w-xs input-bordered"
+            <input type="number" min={0} placeholder="New Quantity" className="input w-full max-w-xs input-bordered"
             onChange={(e)=>{
                 setNewquantity(e.target.value)
                

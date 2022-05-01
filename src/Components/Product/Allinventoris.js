@@ -1,14 +1,9 @@
 import React from "react";
 import Productcard from "./Productcard";
-import { useState,useEffect } from "react";
 import Progress from "../Header/Progress";
+import useGetproduct from "../Hooks/useGetproduct";
 const Allinventoris = () => {
-  const [products, setProducts] = useState([]);
-  useEffect(()=>{
-    fetch('https://young-beach-37066.herokuapp.com/products')
-    .then(res=>res.json())
-    .then(data=>setProducts(data))
-  },[])
+  const [products] = useGetproduct('https://young-beach-37066.herokuapp.com/products');
   return (
     <div className="px-5 py-5 lg:px-10">
       <div className="py-4">

@@ -60,28 +60,28 @@ const Singleproductmanage = () => {
         {sp && (
           <div>
             <div className="mx-auto">
-              <div class="card w-96 bg-base-100 shadow-xl">
+              <div className="card w-96 bg-base-100 shadow-xl">
                 <figure>
                   <img src={sp.img} alt={sp.name} />
                 </figure>
-                <div class="card-body">
-                  <h2 class="card-title">
-                    {sp.name}!<div class="badge badge-secondary">NEW</div>
+                <div className="card-body">
+                  <h2 className="card-title">
+                    {sp.name}!<div className="badge badge-secondary">NEW</div>
                   </h2>
                   <p>{sp.desc}?</p>
-                  <div class="card-actions justify-start">
-                    <div class="badge badge-outline">
+                  <div className="card-actions justify-start">
+                    <div className="badge badge-outline">
                       Price: $<span>{sp.price}</span>
                     </div>
                   </div>
                   <div className="card-actions flex justify-between">
                     <div className="flex flex-col space-y-2">
-                      <div class="badge badge-outline badge-secondary">
+                      <div className="badge badge-outline badge-secondary">
                         Supplier: <span className="px-2">{sp.supplier}</span>
                       </div>
                       <div>
                         <div>
-                          <span class="badge badge-outline badge-success badge-lg">
+                          <span className="badge badge-outline badge-success badge-lg">
                             Quantity: <span className="px-2"> {sp.quan}</span>
                           </span>
                         </div>
