@@ -1,6 +1,7 @@
 import React from "react";
 import Productcard from "./Productcard";
 import { useState,useEffect } from "react";
+import Progress from "../Header/Progress";
 const Allinventoris = () => {
   const [products, setProducts] = useState([]);
   useEffect(()=>{
@@ -16,6 +17,8 @@ const Allinventoris = () => {
           </h1>
           <input type="text" className="input my-2 input-bordered w-full max-w-xs text-black" placeholder="Search Supplier" />
       </div>
+      {!products.length>0 && <Progress/>}
+      {products.length>0 &&
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 ">
          {products.length>0 && products.map((sp)=>{
             return (
@@ -23,6 +26,7 @@ const Allinventoris = () => {
          )
          })}
       </div>
+      }
     </div>
   );
 };

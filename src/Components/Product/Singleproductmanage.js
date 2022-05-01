@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Restockfrom from "../Restockfrom/Restockfrom";
+import Progress from "../Header/Progress";
 const Singleproductmanage = () => {
   const id = useParams().id;
   const [sp, setSp] = useState(null);
@@ -40,6 +41,7 @@ const Singleproductmanage = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2">
       <div className="mx-auto">
+        {!sp && <Progress/>}
         {sp && (
           <div>
             <div className="mx-auto">
@@ -78,6 +80,7 @@ const Singleproductmanage = () => {
         )}
       </div>
       <div>
+      {sp &&
         <div className="mx-auto">
           <div className=" flex justify-center mt-4 space-x-10">
             <div>
@@ -106,6 +109,7 @@ const Singleproductmanage = () => {
 
           {showrestock && <Restockfrom restockItem={restockItem} />}
         </div>
+      }
       </div>
     </div>
   );

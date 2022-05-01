@@ -40,6 +40,9 @@ const Navbar = () => {
                   <li>
                     <Link to="/inventory">Inventory</Link>
                   </li>
+                  <li>
+                  <Link to="/login">Login</Link>
+                </li>
                 </ul>
               </div>
             </div>
@@ -50,6 +53,9 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link to="/inventory">Inventory</Link>
+                </li>
+                <li>
+                  <Link to="/login">Login</Link>
                 </li>
               </ul>
             </div>
