@@ -13,7 +13,12 @@ const Restockfrom = ({restockItem}) => {
             onClick={()=>{
                 restockItem(newquantity);
             }}
-            >UPDATE</button>
+            >ADD</button>
+             <button className='btn btn-warning text-white ml-2'
+            onClick={()=>{
+                restockItem(-1*newquantity);
+            }}
+            >DROP</button>
         </div>
     );
 };

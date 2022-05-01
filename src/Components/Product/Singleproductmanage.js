@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Restockfrom from "../Restockfrom/Restockfrom";
 import Progress from "../Header/Progress";
+import { toast } from "react-toastify";
 const Singleproductmanage = () => {
   const id = useParams().id;
   const [sp, setSp] = useState(null);
@@ -10,7 +11,8 @@ const Singleproductmanage = () => {
   const updateDb=(newquan)=>{
     const data ={_id:sp._id,quan:newquan};
     setSp({...sp,quan:newquan});
-    console.log(data);
+   
+    try{
     fetch("https://young-beach-37066.herokuapp.com/update/", {
       method: "POST",
       headers: {
@@ -19,15 +21,24 @@ const Singleproductmanage = () => {
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) =>{ data?.acknowledged===true && toast("Sucessfull");
+        
+    })
+    .catch((error) => {
+      toast("Some server issu Plz reload the page");
+    });
+  }catch(err){
+    toast("Some server issu Plz reload the page");
+  }
+      
   }
   const orderItem = () => {
     setSp({...sp,quan:sp.quan-1});
     updateDb(sp.quan-1);
   };
   const restockItem = (newquan) => {
-    
-     updateDb(newquan);
+    console.log(newquan);
+     updateDb(parseInt(sp.quan)+ parseInt(newquan));
    
   };
   

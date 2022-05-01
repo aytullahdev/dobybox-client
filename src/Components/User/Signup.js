@@ -13,7 +13,7 @@ const Signup = () => {
       ] = useCreateUserWithEmailAndPassword(auth);
     const {register,handleSubmit,formState:{errors}}=useForm()
     const onSubmit =(data)=>{
-        if(data.pwd!=data.cpwd){
+        if(data.pwd!==data.cpwd){
             const notify = () => toast("Password Doesnt match");
             notify();
             return;
@@ -26,6 +26,7 @@ const Signup = () => {
         })
     }
     return (
+      
         <form onSubmit={handleSubmit(onSubmit)} className='rounded shadow bg-green-400 p-4 text-white uppercase text-3xl w-4/5 lg:w-2/5 mx-auto  mt-10'>
         <div className=''>
             <label className='block' htmlFor="email">Email</label>
@@ -49,7 +50,8 @@ const Signup = () => {
             <button className='btn border-none outline-none btn-secondary  mx-2 block my-2'>Create</button>
             <Link to='/login' className='text-sm link text-blue-500'>Alrady have account</Link>
         </div>
-    </form>
+        </form>
+        
     );
 };
 
