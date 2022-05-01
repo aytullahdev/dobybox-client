@@ -26,21 +26,24 @@ const Signup = () => {
         })
     }
     return (
-      
+      <>
+        <div className='text-3xl uppercase text-center py-1'>
+            <h1>Create a new  Account</h1>
+        </div>
         <form onSubmit={handleSubmit(onSubmit)} className='rounded shadow bg-green-400 p-4 text-white uppercase text-3xl w-4/5 lg:w-2/5 mx-auto  mt-10'>
         <div className=''>
             <label className='block' htmlFor="email">Email</label>
-            <input {...register('email',{required:true})} className='  text-black outline-none  py-2 px-2 ml-2 mt-2' type="email" placeholder='Enter your email' />
+            <input {...register('email',{required:true})} className='   text-2xl w-full rounded text-black outline-none  py-2 px-2 ml-2 mt-2' type="email" placeholder='Enter your email' />
             <span className='text-blue-500 italic text-xs block px-2 py-2'>{errors.email && 'Plz Enter your email'}</span>
         </div>
         <div className='mt-2'>
             <label className='block' htmlFor="password">Password</label>
-            <input {...register('pwd',{required:true})} className=' text-black outline-none   py-2 px-2 ml-2 mt-2' type="password" placeholder='Password' />
+            <input {...register('pwd',{required:true})} className='  text-2xl w-full rounded text-black outline-none   py-2 px-2 ml-2 mt-2' type="password" placeholder='Password' />
             <span className='text-blue-500 italic text-xs block px-2 py-2'>{errors.pwd && 'Plz Enter your password'}</span>
         </div>
         <div className='mt-2'>
             <label className='block' htmlFor="password">Confirm Password</label>
-            <input {...register('cpwd',{required:true})} className=' text-black outline-none   py-2 px-2 ml-2 mt-2' type="password" placeholder='Password' />
+            <input {...register('cpwd',{required:true})} className='  text-2xl w-full rounded text-black outline-none   py-2 px-2 ml-2 mt-2' type="password" placeholder='Confirm Password' />
             <span className='text-blue-500 italic text-xs block px-2 py-2'>{errors.cpwd && 'Plz Enter your password'}</span>
         </div>
         <div>
@@ -51,6 +54,7 @@ const Signup = () => {
             <Link to='/login' className='text-sm link text-blue-500'>Alrady have account</Link>
         </div>
         </form>
+        </>
         
     );
 };

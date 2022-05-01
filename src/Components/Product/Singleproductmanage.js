@@ -8,41 +8,45 @@ const Singleproductmanage = () => {
   const id = useParams().id;
   const [sp, setSp] = useState(null);
   const [showrestock, setShowrestock] = useState(false);
-  const updateDb=(newquan)=>{
-    const data ={_id:sp._id,quan:newquan};
-    setSp({...sp,quan:newquan});
-   
-    try{
-    fetch("https://young-beach-37066.herokuapp.com/update/", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) =>{ data?.acknowledged===true && toast("Sucessfull");
-        
-    })
-    .catch((error) => {
+  const updateDb = (newquan) => {
+    const data = { _id: sp._id, quan: newquan };
+    setSp({ ...sp, quan: newquan });
+
+    try {
+      fetch("https://young-beach-37066.herokuapp.com/update/", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          data?.acknowledged === true && toast("Sucessfull");
+        })
+        .catch((error) => {
+          toast("Some server issu Plz reload the page");
+        });
+    } catch (err) {
       toast("Some server issu Plz reload the page");
-    });
-  }catch(err){
-    toast("Some server issu Plz reload the page");
-  }
-      
-  }
+    }
+  };
   const orderItem = () => {
-    setSp({...sp,quan:sp.quan-1});
-    updateDb(sp.quan-1);
+    if(sp.quan===0){
+        toast("OUT OF STOCK");
+        return;
+    }
+    setSp({ ...sp, quan: sp.quan - 1 });
+    updateDb(sp.quan - 1);
   };
   const restockItem = (newquan) => {
-    console.log(newquan);
-     updateDb(parseInt(sp.quan)+ parseInt(newquan));
-   
+    newquan = parseInt(sp.quan) + parseInt(newquan);
+    if(newquan<0){
+       toast("INVALID NUMBER");
+       return;
+    }
+    updateDb(newquan);
   };
-  
-  
 
   useEffect(() => {
     fetch(`https://young-beach-37066.herokuapp.com/products/${id}`)
@@ -52,7 +56,7 @@ const Singleproductmanage = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2">
       <div className="mx-auto">
-        {!sp && <Progress/>}
+        {!sp && <Progress />}
         {sp && (
           <div>
             <div className="mx-auto">
@@ -91,36 +95,36 @@ const Singleproductmanage = () => {
         )}
       </div>
       <div>
-      {sp &&
-        <div className="mx-auto">
-          <div className=" flex justify-center mt-4 space-x-10">
-            <div>
-              {!showrestock && (
+        {sp && (
+          <div className="mx-auto">
+            <div className=" flex justify-center mt-4 space-x-10">
+              <div>
+                {!showrestock && (
+                  <button
+                    className="btn btn-success text-white btn-lg"
+                    onClick={() => {
+                      orderItem(id);
+                    }}
+                  >
+                    ORDER
+                  </button>
+                )}
+              </div>
+              <div>
                 <button
-                  className="btn btn-success text-white btn-lg"
+                  className="btn btn-secondary text-white btn-lg"
                   onClick={() => {
-                    orderItem(id);
+                    setShowrestock(!showrestock);
                   }}
                 >
-                  ORDER
+                  {showrestock ? "HIDE" : "Restock"}
                 </button>
-              )}
+              </div>
             </div>
-            <div>
-              <button
-                className="btn btn-secondary text-white btn-lg"
-                onClick={() => {
-                  setShowrestock(!showrestock);
-                }}
-              >
-                {showrestock ? "HIDE" : "Restock"}
-              </button>
-            </div>
-          </div>
 
-          {showrestock && <Restockfrom restockItem={restockItem} />}
-        </div>
-      }
+            {showrestock && <Restockfrom restockItem={restockItem} />}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,23 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import {  signOut } from 'firebase/auth';
+import auth from '../../../Firebase/firebase.init'
+import Progress from "../Progress";
 const Navbar = () => {
+  const [user, loading, error] = useAuthState(auth);
+  const logout = () => {
+    signOut(auth);
+  };
+  if(loading){
+    return <Progress/>
+  }
   return (
     <div className="px-1 lg:px-10  py-2">
-      <div class="navbar bg-base-100 rounded-lg shadow-md">
-        <div class="flex-1">
-          <Link to="/" class="btn outline-none border-none normal-case text-xl bg-blue-400 text-white">
+      <div className="navbar bg-base-100 rounded-lg shadow-md">
+        <div className="flex-1">
+          <Link to="/" className="btn outline-none border-none normal-case text-xl bg-blue-400 text-white">
             DOBYBOX
           </Link>
         </div>
        
         <div>
-          <div class="navbar bg-base-100">
-            <div class="navbar-start">
-              <div class="dropdown">
-                <label tabindex="0" class="btn btn-ghost lg:hidden">
+          <div className="navbar bg-base-100">
+            <div className="navbar-start">
+              <div className="dropdown">
+                <label tabindex="0" className="btn btn-ghost lg:hidden">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
+                    className="h-5 w-5"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -32,7 +43,7 @@ const Navbar = () => {
                 </label>
                 <ul
                   tabindex="0"
-                  class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                  className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
                 >
                   <li>
                     <Link to="/">Home</Link>
@@ -46,27 +57,58 @@ const Navbar = () => {
                 </ul>
               </div>
             </div>
-            <div class="navbar-center hidden lg:flex">
-              <ul class="menu menu-horizontal p-0">
+            <div className="navbar-center hidden lg:flex">
+              <ul className="menu menu-horizontal p-0">
                 <li>
                   <Link to="/">Home</Link>
                 </li>
                 <li>
                   <Link to="/inventory">Inventory</Link>
                 </li>
+                { !user &&
                 <li>
-                  <Link to="/login">Login</Link>
+                   <Link to="/login">Login</Link>
+               
                 </li>
+                }
               </ul>
             </div>
           </div>
         </div>
+        {user &&
+        <div className="flex-none mr-2">
+          <div className="dropdown dropdown-end">
+            <label tabindex="0" className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img src="https://api.lorem.space/image/face?hash=33791" />
+              </div>
+            </label>
+            <ul
+              tabindex="0"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <Link to="/dashboard" className="justify-between">
+                  Dashboard
+                  <span className="badge">New</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/">Settings</Link>
+              </li>
+              <li>
+                <a onClick={()=> logout()}>Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        }
         <div>
-          <label class="swap swap-rotate">
+          <label className="swap swap-rotate">
             <input type="checkbox" />
 
             <svg
-              class="swap-on fill-current w-10 h-10"
+              className="swap-on fill-current w-10 h-10"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -74,7 +116,7 @@ const Navbar = () => {
             </svg>
 
             <svg
-              class="swap-off fill-current w-10 h-10"
+              className="swap-off fill-current w-10 h-10"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -82,32 +124,7 @@ const Navbar = () => {
             </svg>
           </label>
         </div>
-        <div class="flex-none">
-          <div class="dropdown dropdown-end">
-            <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-              <div class="w-10 rounded-full">
-                <img src="https://api.lorem.space/image/face?hash=33791" />
-              </div>
-            </label>
-            <ul
-              tabindex="0"
-              class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <Link to="/dashboard" class="justify-between">
-                  Dashboard
-                  <span class="badge">New</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/">Settings</Link>
-              </li>
-              <li>
-                <a>Logout</a>
-              </li>
-            </ul>
-          </div>
-        </div>
+        
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import Addproduct from '../Product/Addproduct';
+import Manaageallproduct from './Manaageallproduct';
 
 const Manageinventory = () => {
     const [showmpro, setshowmpro] = useState(false)
@@ -12,6 +13,7 @@ const Manageinventory = () => {
         </div>
         <div>
             {!showmpro && <Addproduct/>}
+            {showmpro && <Manaageallproduct/>}
         </div>
         </>
     );
