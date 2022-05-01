@@ -1,5 +1,4 @@
 import React from "react";
-import Productcard from "./Productcard";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Restockfrom from "../Restockfrom/Restockfrom";
@@ -11,7 +10,7 @@ const Singleproductmanage = () => {
     const data ={_id:sp._id,quan:newquan};
     setSp({...sp,quan:newquan});
     console.log(data);
-    fetch("http://localhost:5000/update/", {
+    fetch("https://young-beach-37066.herokuapp.com/update/", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -34,7 +33,7 @@ const Singleproductmanage = () => {
   
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products/${id}`)
+    fetch(`https://young-beach-37066.herokuapp.com/products/${id}`)
       .then((res) => res.json())
       .then((data) => setSp(data));
   }, []);
