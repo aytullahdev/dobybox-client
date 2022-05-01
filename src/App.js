@@ -7,6 +7,7 @@ import Manageinventory from './Components/Manageinventory/Manageinventory';
 import Login from './Components/User/Login';
 import { ToastContainer,toast  } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Signup from './Components/User/Signup';
 function App() {
   // const notify = () => toast("Wow so easy!");
   // <button onClick={notify}>Notify!</button>
@@ -19,6 +20,7 @@ function App() {
         <Route path='/inventory' element={<Allinventoris/>}/>
         <Route path='/inventory/:id' element={<Singleproductmanage/>}/>
         <Route path='/login' element={<Login/>}/>
+        <Route path='/signup' element={<Signup/>}/>
         <Route path='/manageinventory' element={<Manageinventory/>}/>
       </Routes>
       <ToastContainer />
