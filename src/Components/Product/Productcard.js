@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 const Productcard = ({name,id,desc,price,quan,supplier,img}) => {
   return (
-    <div className="mx-auto">
-      <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="mx-auto w-full">
+      <div className="card  bg-base-100 shadow-xl">
         <figure>
           <img
             src={img}

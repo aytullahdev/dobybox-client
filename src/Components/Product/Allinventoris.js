@@ -14,7 +14,7 @@ const Allinventoris = () => {
       </div>
       {!products.length>0 && <Progress/>}
       {products.length>0 &&
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 ">
          {products.length>0 && products.map((sp)=>{
             return (
               <Productcard key={sp._id} id={sp._id} name={sp.name} desc={sp.desc} price={sp.price} supplier={sp.supplier} quan={sp.quan} img={sp.img} />

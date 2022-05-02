@@ -1,6 +1,21 @@
 import React from 'react';
-
-const Singleproductmanage = ({name,id,desc,price,quan,supplier,img}) => {
+const Singleproductmanage = ({name,id,desc,price,quan,supplier,img,Reload}) => {
+   
+  const deleteItem =()=>{
+    const data={_id:id};
+    
+    fetch('https://young-beach-37066.herokuapp.com/products',{
+      method:'DELETE',
+        headers:{
+          'content-type': 'application/json'
+      },
+        body:JSON.stringify(data)
+  })
+  .then(res=> res.json())
+  .then(data => console.log(data))
+    console.log(id);
+    Reload();
+   }
     return (
         
             <tr>
@@ -26,6 +41,7 @@ const Singleproductmanage = ({name,id,desc,price,quan,supplier,img}) => {
         <td>{quan}</td>
         <th>
           <button class="btn btn-ghost btn-xs">details</button>
+          <button className='btn btn-warning text-white btn-xs ml-2' onClick={()=>deleteItem()}>Delete</button>
         </th>
       </tr>
         
