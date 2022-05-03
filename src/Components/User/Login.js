@@ -1,9 +1,12 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../Firebase/firebase.init';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 const Login = () => {
+    const navigate= useNavigate();
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
     const [
         signInWithEmailAndPassword,
         user,
@@ -16,6 +19,11 @@ const Login = () => {
         .then(()=>{
             console.log(user);
         })
+    }
+    if(!loading){
+        if(user){
+            navigate(from,{replace:true});
+        }
     }
     return (
         <>

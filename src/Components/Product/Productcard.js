@@ -1,8 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 const Productcard = ({name,id,desc,price,quan,supplier,img}) => {
   return (
-    <div className="mx-auto w-full">
+    <motion.div 
+     initial={{opacity:0,x:'100vw'}}
+     animate={{opacity:1,x:0}}
+     transition={{delay:0.5}}
+    className="mx-auto w-full">
       <div className="card  bg-base-100 shadow-xl">
         <figure>
           <img
@@ -35,7 +40,7 @@ const Productcard = ({name,id,desc,price,quan,supplier,img}) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

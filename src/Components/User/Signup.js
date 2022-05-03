@@ -2,9 +2,13 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import {  useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../Firebase/firebase.init';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 const Signup = () => {
+    const navigate= useNavigate();
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
     const [
         createUserWithEmailAndPassword,
         user,
@@ -20,11 +24,14 @@ const Signup = () => {
         }
         createUserWithEmailAndPassword(data.email,data.pwd)
         .then(()=>{
-            if(user){
+            
+                navigate(from,{replace:true});
+        
                 toast("Account Created Sucessfullly");
-            }
+            
         })
     }
+   
     return (
       <>
         <div className='text-3xl uppercase text-center py-1'>
