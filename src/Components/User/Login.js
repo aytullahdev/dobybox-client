@@ -2,11 +2,12 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../Firebase/firebase.init';
-import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithGoogle, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 const Login = () => {
     const navigate= useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
+    const [signInWithGoogle] = useSignInWithGoogle(auth);
     const [
         signInWithEmailAndPassword,
         user,
@@ -47,7 +48,21 @@ const Login = () => {
                 <button className='btn border-none outline-none btn-secondary  mx-2 block my-2'>Login</button>
                 <Link to='/signup' className='text-sm link text-blue-500'>Create an account</Link>
             </div>
+            <div className="divider">OR</div>
+            <div>
+                <button type='button' className='btn btn-ghost text-white' onClick={()=>{
+                        signInWithGoogle()
+                        .then(()=>{
+                            navigate(from,{replace:true});
+                        })
+                }}>Continue with Google</button>
+            </div>
+
         </form>
+       
+        <div>
+
+        </div>
         </>
     );
 };
