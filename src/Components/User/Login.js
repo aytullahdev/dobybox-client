@@ -16,9 +16,7 @@ const Login = () => {
     const {register,handleSubmit,formState:{errors}}=useForm()
     const onSubmit =(data)=>{
         signInWithEmailAndPassword(data.email,data.pwd)
-        .then(()=>{
-            console.log(user);
-        })
+        
     }
     if(!loading){
         if(user){

@@ -11,8 +11,6 @@ const Signup = () => {
     let from = location.state?.from?.pathname || "/";
     const [
         createUserWithEmailAndPassword,
-        user,
-        loading,
         error,
       ] = useCreateUserWithEmailAndPassword(auth);
     const {register,handleSubmit,formState:{errors}}=useForm()
@@ -22,7 +20,7 @@ const Signup = () => {
             notify();
             return;
         }
-        createUserWithEmailAndPassword(data.email,data.pwd)
+        createUserWithEmailAndPassword(data.email,data.pwd,{sendEmailVerification:true})
         .then(()=>{
             
                 navigate(from,{replace:true});

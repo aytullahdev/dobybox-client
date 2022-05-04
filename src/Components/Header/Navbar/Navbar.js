@@ -3,15 +3,13 @@ import { Link } from "react-router-dom";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import {  signOut } from 'firebase/auth';
 import auth from '../../../Firebase/firebase.init'
-import Progress from "../Progress";
+import pimg from './blank-profile-picture-g43042f5b5_640.png';
 const Navbar = () => {
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const logout = () => {
     signOut(auth);
   };
-  if(loading){
-    return <Progress/>
-  }
+ 
   return (
     <div className="px-1 lg:px-10  py-2">
       <div className="navbar bg-base-100 rounded-lg shadow-md">
@@ -80,7 +78,7 @@ const Navbar = () => {
           <div className="dropdown dropdown-end">
             <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                <img src="https://api.lorem.space/image/face?hash=33791" />
+                <img src={user?.photoURL || pimg } />
               </div>
             </label>
             <ul

@@ -10,9 +10,7 @@ const Header = () => {
             
             <Banner/>
             <Allinventoris/> 
-            <div className='flex flex-row items-center justify-center py-5'>
-                <Link to="/manageinventory" className='btn btn-lg btn-warning mx-auto text-white'>Manage Products</Link>
-            </div>          
+                     
         </div>
     );
 };
