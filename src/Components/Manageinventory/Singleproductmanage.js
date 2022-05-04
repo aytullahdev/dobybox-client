@@ -16,7 +16,8 @@ const Singleproductmanage = ({
   const deleteItem = () => {
     const data = { _id: id };
     if(user.email!==supplier){
-      toast("⚠ This is not your item")
+      toast("⚠ This is not your item");
+      return;
     }
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {

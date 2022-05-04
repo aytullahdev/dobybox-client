@@ -11,9 +11,9 @@ import Signup from "./Components/User/Signup";
 import Notrequerauth from "./Components/Secure/Notrequerauth";
 import Requerdauth from "./Components/Secure/Requerdauth";
 import Myitems from "./Components/Manageinventory/Myitems";
+import Blogs from "./Components/Blogs/Blogs";
 function App() {
-  // const notify = () => toast("Wow so easy!");
-  // <button onClick={notify}>Notify!</button>
+  
   return (
     <div className="App">
       <Navbar />
@@ -28,6 +28,7 @@ function App() {
             </Requerdauth>
           }
         />
+        <Route path="/blogs" element={<Blogs />} />
         <Route
           path="/inventory/:id"
           element={
@@ -77,7 +78,6 @@ function App() {
         closeOnClick
         rtl={false}
         draggable
-      
       />
     </div>
   );
