@@ -1,5 +1,8 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import auth from "../../Firebase/firebase.init";
 const Singleproductmanage = ({
   name,
   id,
@@ -12,6 +15,9 @@ const Singleproductmanage = ({
 }) => {
   const deleteItem = () => {
     const data = { _id: id };
+    if(user.email!==supplier){
+      toast("⚠ This is not your item")
+    }
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: "btn btn-success",
@@ -60,6 +66,7 @@ const Singleproductmanage = ({
         }
       });
   };
+  const [user] = useAuthState(auth);
   return (
     <tr>
       <td>
@@ -84,6 +91,7 @@ const Singleproductmanage = ({
         <button
           className="btn btn-warning text-white btn-xs ml-2"
           onClick={() => deleteItem()}
+          disabled={user.email!==supplier}
         >
           Delete
         </button>

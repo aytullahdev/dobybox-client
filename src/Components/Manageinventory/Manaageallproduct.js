@@ -2,8 +2,8 @@ import React from 'react';
 import useGetproduct from '../Hooks/useGetproduct';
 import Singleproductmanage from './Singleproductmanage';
 import Progress from '../Header/Progress'
-const Manaageallproduct = () => {
-    const [products,Reload]= useGetproduct('https://young-beach-37066.herokuapp.com/products');
+const Manaageallproduct = ({url}) => {
+    const [products,Reload]= useGetproduct(url);
     return (        
         <div className='px-5'>
       

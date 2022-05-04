@@ -1,31 +1,84 @@
-import  Navbar from './Components/Header/Navbar/Navbar';
-import { Route, Routes } from 'react-router-dom';
-import Header from './Components/Header/Header';
-import Allinventoris from './Components/Product/Allinventoris';
-import Singleproductmanage from './Components/Product/Singleproductmanage';
-import Manageinventory from './Components/Manageinventory/Manageinventory';
-import Login from './Components/User/Login';
-import { ToastContainer,toast  } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Signup from './Components/User/Signup';
-import Notrequerauth from './Components/Secure/Notrequerauth';
-import Requerdauth from './Components/Secure/Requerdauth';
+import Navbar from "./Components/Header/Navbar/Navbar";
+import { Route, Routes } from "react-router-dom";
+import Header from "./Components/Header/Header";
+import Allinventoris from "./Components/Product/Allinventoris";
+import Singleproductmanage from "./Components/Product/Singleproductmanage";
+import Manageinventory from "./Components/Manageinventory/Manageinventory";
+import Login from "./Components/User/Login";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Signup from "./Components/User/Signup";
+import Notrequerauth from "./Components/Secure/Notrequerauth";
+import Requerdauth from "./Components/Secure/Requerdauth";
+import Myitems from "./Components/Manageinventory/Myitems";
 function App() {
   // const notify = () => toast("Wow so easy!");
   // <button onClick={notify}>Notify!</button>
   return (
     <div className="App">
-      <Navbar/>
-      
+      <Navbar />
+
       <Routes>
-        <Route path='/' element={ <Header/>}/>
-        <Route path='/inventory' element={<Requerdauth><Allinventoris/></Requerdauth>}/>
-        <Route path='/inventory/:id' element={<Requerdauth><Singleproductmanage/></Requerdauth>}/>
-        <Route path='/login' element={<Notrequerauth><Login/></Notrequerauth>}/>
-        <Route path='/signup' element={<Notrequerauth><Signup/></Notrequerauth>}/>
-        <Route path='/manageinventory' element={<Requerdauth><Manageinventory/></Requerdauth>}/>
+        <Route path="/" element={<Header />} />
+        <Route
+          path="/inventory"
+          element={
+            <Requerdauth>
+              <Allinventoris />
+            </Requerdauth>
+          }
+        />
+        <Route
+          path="/inventory/:id"
+          element={
+            <Requerdauth>
+              <Singleproductmanage />
+            </Requerdauth>
+          }
+        />
+        <Route
+          path="/myitems"
+          element={
+            <Requerdauth>
+              <Myitems />
+            </Requerdauth>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <Notrequerauth>
+              <Login />
+            </Notrequerauth>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <Notrequerauth>
+              <Signup />
+            </Notrequerauth>
+          }
+        />
+        <Route
+          path="/manageinventory"
+          element={
+            <Requerdauth>
+              <Manageinventory />
+            </Requerdauth>
+          }
+        />
       </Routes>
-      <ToastContainer />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        draggable
+      
+      />
     </div>
   );
 }

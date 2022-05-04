@@ -69,6 +69,12 @@ const Navbar = () => {
                
                 </li>
                 }
+                { user &&
+                <li>
+                   <Link to="/myitems">My Items</Link>
+               
+                </li>
+                }
               </ul>
             </div>
           </div>
