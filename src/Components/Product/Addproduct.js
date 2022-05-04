@@ -5,7 +5,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../Firebase/firebase.init";
 import Progress from "../Header/Progress";
 import Swal from "sweetalert2";
-import { toast } from "react-toastify";
 const Addproduct = () => {
   const [user, loading] = useAuthState(auth);
   const {
@@ -51,7 +50,7 @@ const Addproduct = () => {
   return (
     <motion.div>
       <div className="mt-5">
-        <h2 className="text-center text-3xl text-gray-500 pb-4 capitalize">
+        <h2 className="text-center text-3xl text-gray-500  capitalize">
           Add Product
         </h2>
       </div>
@@ -166,14 +165,14 @@ const Addproduct = () => {
               >
                 Product Descriptions
               </label>
-              <input
+              <textarea
                 {...register("pdesc", { required: true })}
                 className="block mt-2  py-3 px-4 w-full border-green-700 rounded border outline-none resize-none appearance-none"
                 id="pds"
                 cols="30"
                 rows="5"
                 placeholder="Product Description"
-              ></input>
+              ></textarea>
               {errors.pdesc && (
                 <p className="text-sm text-green-500 italic mt-2">
                   Please fill out the field

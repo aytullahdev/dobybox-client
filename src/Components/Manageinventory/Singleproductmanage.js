@@ -1,5 +1,6 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import auth from "../../Firebase/firebase.init";
@@ -88,7 +89,7 @@ const Singleproductmanage = ({
       </td>
       <td>{quan}</td>
       <th>
-        <button className="btn btn-ghost btn-xs">details</button>
+        <Link to={`/update/${id}`} className="btn btn-ghost btn-xs">details</Link>
         <button
           className="btn btn-warning text-white btn-xs ml-2"
           onClick={() => deleteItem()}

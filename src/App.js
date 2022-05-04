@@ -12,6 +12,8 @@ import Notrequerauth from "./Components/Secure/Notrequerauth";
 import Requerdauth from "./Components/Secure/Requerdauth";
 import Myitems from "./Components/Manageinventory/Myitems";
 import Blogs from "./Components/Blogs/Blogs";
+import Notfound from "./Components/Errorpage/Notfound";
+import Updateproduct from "./Components/Product/Updateproduct";
 function App() {
   
   return (
@@ -69,6 +71,8 @@ function App() {
             </Requerdauth>
           }
         />
+        <Route path="update/:id" element={<Requerdauth><Updateproduct/></Requerdauth>}/>
+        <Route path="*" element={<Notfound/>}/>
       </Routes>
       <ToastContainer
         position="bottom-right"
