@@ -15,8 +15,8 @@ const Singleproductmanage = ({
   Reload,
 }) => {
   const deleteItem = () => {
-    const data = { _id: id };
-    if(user.email!==supplier){
+    const data = { _id: id ,supplier:supplier};
+    if (user.email !== supplier) {
       toast("⚠ This is not your item");
       return;
     }
@@ -44,6 +44,8 @@ const Singleproductmanage = ({
             method: "DELETE",
             headers: {
               "content-type": "application/json",
+
+              authorization: `bearear ${localStorage.getItem("token")}`,
             },
             body: JSON.stringify(data),
           })
@@ -85,15 +87,23 @@ const Singleproductmanage = ({
         </div>
       </td>
       <td>
-        <span className="badge text-lg p-3 badge-ghost badge-sm">{supplier}</span>
+        <span className="badge text-lg p-3 badge-ghost badge-sm">
+          {supplier}
+        </span>
       </td>
       <td>{quan}</td>
       <th>
-        <Link to={`/update/${id}`} className="btn btn-ghost btn-xs"  disabled={user.email!==supplier}>Update</Link>
+        <Link
+          to={`/update/${id}`}
+          className="btn btn-ghost btn-xs"
+          disabled={user.email !== supplier}
+        >
+          Update
+        </Link>
         <button
           className="btn btn-warning text-white btn-xs ml-2"
           onClick={() => deleteItem()}
-          disabled={user.email!==supplier}
+          disabled={user.email !== supplier}
         >
           Delete
         </button>

@@ -25,6 +25,7 @@ const Addproduct = () => {
           method: "POST",
           headers: {
             "content-type": "application/json",
+            authorization: `bearear ${localStorage.getItem("token")}`,
           },
           body: JSON.stringify(data),
         })

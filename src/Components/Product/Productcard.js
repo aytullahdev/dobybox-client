@@ -34,6 +34,9 @@ const Productcard = ({name,id,desc,price,quan,supplier,img}) => {
               <div>
               <span className="badge badge-outline badge-success badge-lg">Quantity:  <span className="px-2"> {quan}</span></span>
               </div>  
+              <div>
+              { quan===0 && <span className="bg-orange-500 text-white  py-1 block m-1 rounded text-center text-xs">SOLD OUT</span>}
+              </div>
               </div>
             </div>
             <div>
