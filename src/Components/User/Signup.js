@@ -7,27 +7,36 @@ import auth from '../../Firebase/firebase.init';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 const Signup = () => {
     const navigate= useNavigate();
+    
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
     const [
         createUserWithEmailAndPassword,
+        user,
+        loading,
         error,
       ] = useCreateUserWithEmailAndPassword(auth);
+      
     const {register,handleSubmit,formState:{errors}}=useForm()
     const onSubmit =(data)=>{
         if(data.pwd!==data.cpwd){
-            const notify = () => toast("Password Doesnt match");
+            const notify = () => toast("Password Doesn't match");
             notify();
             return;
         }
-        createUserWithEmailAndPassword(data.email,data.pwd,{sendEmailVerification:true})
-        .then(()=>{
-            
-                navigate(from,{replace:true});
+        try{
+            createUserWithEmailAndPassword(data.email,data.pwd,{sendEmailVerification:true})
+            if(!loading){
+                if(user){
+                    navigate(from,{replace:true});
+                    toast("Account Created Sucessfullly");
+                    }
+            }
+        }catch(err){
+            error.message="Some Error ";
+        }
         
-                toast("Account Created Sucessfullly");
-            
-        })
+    
     }
    
     return (
@@ -52,10 +61,11 @@ const Signup = () => {
             <span className='text-blue-500 italic text-xs block px-2 py-2'>{errors.cpwd && 'Plz Enter your password'}</span>
         </div>
         <div>
-            <span className='text-xs text-white'>{error?.message}</span>
+       
+            <span className='text-xs text-black'>{error?.message}</span>
         </div>
         <div className='flex items-center my-2'>
-            <button className='btn border-none outline-none btn-secondary  mx-2 block my-2'>Create</button>
+            <button className='btn border-none outline-none btn-secondary  mx-2 block my-2' type='submit'>Create</button>
             <Link to='/login' className='text-sm link text-blue-500'>Alrady have account</Link>
         </div>
         </form>

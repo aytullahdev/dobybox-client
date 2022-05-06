@@ -6,9 +6,11 @@ function useGetproduct(url) {
       fetch(lurl)
         .then((res) => res.json())
         .then((data) =>{ setProducts(data)})
-        .catch((err)=>{console.log("Some server error;")})
+        .catch((err)=>{setTimeout(loadData(url),1000)})
     } catch (err) {
       console.error("Server error to load the data");
+      setTimeout(loadData(url),2000)
+      
     }
   };
   useEffect(() => {
