@@ -5,11 +5,12 @@ import { Link } from 'react-router-dom';
 import {  useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../Firebase/firebase.init';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { signOut } from 'firebase/auth';
 const Signup = () => {
     const navigate= useNavigate();
     
     const location = useLocation();
-    let from = location.state?.from?.pathname || "/";
+    let from = "/login";
     const [
         createUserWithEmailAndPassword,
         user,
@@ -25,18 +26,21 @@ const Signup = () => {
             return;
         }
         try{
-            createUserWithEmailAndPassword(data.email,data.pwd,{sendEmailVerification:true})
-            if(!loading){
-                if(user){
-                    navigate(from,{replace:true});
-                    toast("Account Created Sucessfullly");
-                    }
-            }
+            createUserWithEmailAndPassword(data.email,data.pwd,{sendEmailVerification:true});
+           
         }catch(err){
             error.message="Some Error ";
         }
         
     
+    }
+    if(!loading){
+        if(user){
+            navigate(from,{replace:true});
+            toast("Account Created Sucessfullly");
+            signOut(auth);
+            }
+            
     }
    
     return (

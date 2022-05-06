@@ -25,7 +25,7 @@ const Login = () => {
     signInWithEmailAndPassword(auth, data.email, data.pwd)
       .then((res) => {
         setError("");
-        console.log(res.user);
+       
       })
       .catch((err) => {
         setError(err.message);
@@ -35,7 +35,7 @@ const Login = () => {
     if (user) {
       const data = { email: user.email };
 
-      fetch("http://localhost:5000/login", {
+      fetch("https://young-beach-37066.herokuapp.com/login", {
         method: "POST", // or 'PUT'
         headers: {
           "Content-Type": "application/json",
@@ -45,7 +45,7 @@ const Login = () => {
         .then((res) => res.json())
         .then((rdata) => {
             localStorage.setItem('token',rdata.token)
-          navigate(from, { replace: true });
+           navigate(from, { replace: true });
         });
     }
   }
