@@ -45,7 +45,7 @@ const Login = () => {
         .then((res) => res.json())
         .then((rdata) => {
             localStorage.setItem('token',rdata.token)
-           navigate(from, { replace: true });
+             navigate(from, { replace: true });
         });
     }
   }

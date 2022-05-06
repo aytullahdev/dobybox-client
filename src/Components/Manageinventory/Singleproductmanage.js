@@ -89,7 +89,7 @@ const Singleproductmanage = ({
       </td>
       <td>{quan}</td>
       <th>
-        <Link to={`/update/${id}`} className="btn btn-ghost btn-xs">details</Link>
+        <Link to={`/update/${id}`} className="btn btn-ghost btn-xs"  disabled={user.email!==supplier}>Update</Link>
         <button
           className="btn btn-warning text-white btn-xs ml-2"
           onClick={() => deleteItem()}

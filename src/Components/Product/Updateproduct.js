@@ -24,12 +24,12 @@ const Updateproduct = () => {
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
-          fetch("https://young-beach-37066.herokuapp.com/update", {
+          fetch("http://localhost:5000/updates", {
             method: "POST",
             headers: {
               "content-type": "application/json",
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(sp),
           })
             .then((res) => res.json())
             .then((data) => {
@@ -47,13 +47,13 @@ const Updateproduct = () => {
         }
       });
     };
-    const [sp, setsp] = useState({})
+    const [sp, setsp] = useState(undefined)
     useEffect(() => {
-       fetch(`https://young-beach-37066.herokuapp.com/products/${id}`).then((res)=>res.json()).then((data)=>setsp(data));
+      fetch(`https://young-beach-37066.herokuapp.com/products/${id}`).then((res)=>res.json()).then((data)=>setsp(data));
     }, [])
     
     
-    if (loading) {
+    if (loading || !sp) {
       return <Progress />;
     }
     return (
@@ -75,9 +75,12 @@ const Updateproduct = () => {
                 </label>
                 <input
                   type="text"
+                  value={sp?.name}
+                  {...register("pname", { required: true })}
+                  onChange={(e)=>{setsp({...sp, name:e.target.value})}}
                   className="block mt-2  py-3 px-4 w-full border-green-700 rounded border outline-none"
                   placeholder="product name"
-                  {...register("pname", { required: true })}
+                  
                 />
                 {errors.pname && (
                   <p className="text-sm text-green-500 italic mt-2">
@@ -96,6 +99,8 @@ const Updateproduct = () => {
                 </label>
                 <input
                   {...register("pprice", { required: true, min: 0 })}
+                  value={sp?.price}
+                  onChange={(e)=>{setsp({...sp, price:e.target.value})}}
                   type="number"
                   id="proprice"
                   className="block mt-2 py-3 px-4 rounded text-gray-700 w-full border-green-500 border outline-none "
@@ -114,7 +119,9 @@ const Updateproduct = () => {
                   Quantity
                 </label>
                 <input
-                  {...register("pquan", { required: true, min: 0 })}
+                   {...register("pquan", { required: true, min: 0 })}
+                  value={sp?.quan}
+                  onChange={(e)=>{setsp({...sp, quan:e.target.value})}}
                   type="number"
                   id="proquan"
                   className="block mt-2 py-3 px-4 rounded text-gray-700 w-full border-green-500 border outline-none "
@@ -132,10 +139,11 @@ const Updateproduct = () => {
                 </label>
                 <input
                   {...register("psupplier", { required: true })}
+                  value={sp?.supplier}
                   type="text"
                   className="block mt-2  py-3 px-4 w-full border-green-700 rounded border outline-none"
                   placeholder="Supplier"
-                  value={user?.email}
+                 
                   readOnly
                 />
                 {errors.psupplier && (
@@ -155,6 +163,8 @@ const Updateproduct = () => {
                 </label>
                 <input
                   {...register("pimg", { required: true })}
+                  value={sp?.img}
+                  onChange={(e)=>{setsp({...sp, img:e.target.value})}}
                   type="text"
                   className="block mt-2  py-3 px-4 w-full border-green-700 rounded border outline-none"
                   placeholder="Product img url"
@@ -176,6 +186,8 @@ const Updateproduct = () => {
                 </label>
                 <textarea
                   {...register("pdesc", { required: true })}
+                  value={sp?.desc}
+                  onChange={(e)=>{setsp({...sp, desc:e.target.value})}}
                   className="block mt-2  py-3 px-4 w-full border-green-700 rounded border outline-none resize-none appearance-none"
                   id="pds"
                   cols="30"
