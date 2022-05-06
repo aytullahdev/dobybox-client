@@ -6,9 +6,10 @@ import auth from "../../Firebase/firebase.init";
 import Progress from "../Header/Progress";
 import Swal from "sweetalert2";
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 const Updateproduct = () => {
     const id = useParams().id;
+    const navigate = useNavigate();
     const [user, loading] = useAuthState(auth);
     const {
       register,
@@ -24,7 +25,7 @@ const Updateproduct = () => {
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
-          fetch("http://localhost:5000/updates", {
+          fetch("https://young-beach-37066.herokuapp.com/updates", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -55,6 +56,11 @@ const Updateproduct = () => {
     
     if (loading || !sp) {
       return <Progress />;
+    }
+    if(!loading && sp){
+        if(user.email!==sp.supplier){
+           navigate('/myitems',{replace:true})
+        }
     }
     return (
       <motion.div>
