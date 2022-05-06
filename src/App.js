@@ -14,6 +14,7 @@ import Myitems from "./Components/Manageinventory/Myitems";
 import Blogs from "./Components/Blogs/Blogs";
 import Notfound from "./Components/Errorpage/Notfound";
 import Updateproduct from "./Components/Product/Updateproduct";
+import Passwordreset from "./Components/User/Passwordreset";
 function App() {
   
   return (
@@ -72,6 +73,7 @@ function App() {
           }
         />
         <Route path="update/:id" element={<Requerdauth><Updateproduct/></Requerdauth>}/>
+        <Route path="/pwdreset" element={<Notrequerauth><Passwordreset/></Notrequerauth>}/>
         <Route path="*" element={<Notfound/>}/>
       </Routes>
       <ToastContainer

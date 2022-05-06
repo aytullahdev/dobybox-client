@@ -97,6 +97,7 @@ const Login = () => {
           <Link to="/signup" className="text-sm link text-blue-500">
             Create an account
           </Link>
+         {error && <Link to="/pwdreset" className="link text-sm underline text-orange-500 ml-4">reset Password</Link>}
         </div>
         <div className="divider">OR</div>
         <div>
