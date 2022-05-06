@@ -21,7 +21,7 @@ const Productcard = ({name,id,desc,price,quan,supplier,img}) => {
             {name}!
             <div className="badge badge-secondary">NEW</div>
           </h2>
-          <p>{desc}?</p>
+          <p>{desc.substring(0,20)}...</p>
           <div className="badge badge-outline badge-secondary">Supplier: <span className="px-2">{supplier}</span></div>
           <div className="card-actions justify-start">
             <div className="badge badge-outline">Price: $<span>{price}</span></div>

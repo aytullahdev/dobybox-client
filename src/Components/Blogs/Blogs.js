@@ -28,7 +28,7 @@ const Blogs = () => {
            <div className='w-3/4 mx-auto py-2 '>
                <h1 className='text-3xl uppercase pb-3 font-bold'>What is the purpose of jwt and how does it work </h1>
                <p className='text-2xl capitalize'>
-                To provide secure API connection we use JWT ---> JSON WEB TOKEN . It provide a level of web security in our API. It is highly encryped . By using JWT we can easily make our Middleware to provide the user Access for a certain API. Middleware is a programme which  check the current request is a server is valid or not.
+                To provide secure API connection we use JWT ---  JSON WEB TOKEN . It provide a level of web security in our API. It is highly encryped . By using JWT we can easily make our Middleware to provide the user Access for a certain API. Middleware is a programme which  check the current request is a server is valid or not.
                   
                </p>
            </div>
