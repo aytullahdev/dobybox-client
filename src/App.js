@@ -16,6 +16,7 @@ import Notfound from "./Components/Errorpage/Notfound";
 import Updateproduct from "./Components/Product/Updateproduct";
 import Passwordreset from "./Components/User/Passwordreset";
 import Forbidden from "./Components/Errorpage/Forbidden"
+import Footer from "./Components/Footer/Footer";
 function App() {
   
   return (
@@ -79,6 +80,7 @@ function App() {
         <Route path="*" element={<Notfound/>}/>
 
       </Routes>
+      <Footer/>
       <ToastContainer
         position="bottom-right"
         autoClose={2000}
@@ -88,6 +90,7 @@ function App() {
         rtl={false}
         draggable
       />
+      
     </div>
   );
 }

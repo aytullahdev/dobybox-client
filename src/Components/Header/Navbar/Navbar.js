@@ -11,7 +11,7 @@ const Navbar = () => {
   };
  
   return (
-    <div className="px-1 lg:px-10  py-2">
+    <div className="px-1 lg:px-10 z-50  py-2">
       <div className="navbar bg-base-100 rounded-lg shadow-md">
         <div className="flex-1">
           <Link to="/" className="btn outline-none border-none normal-case text-xl bg-blue-400 text-white">
