@@ -9,7 +9,7 @@ const Header = () => {
         <div>
             
             <Banner/>
-            <Allinventoris/> 
+            <Allinventoris url="https://young-beach-37066.herokuapp.com/products/?limit=6"/> 
                      
         </div>
     );

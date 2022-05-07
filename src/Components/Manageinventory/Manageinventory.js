@@ -29,7 +29,7 @@ const Manageinventory = () => {
         {!showmpro && <Addproduct />}
         {showmpro && (
           <Manaageallproduct
-            url={"https://young-beach-37066.herokuapp.com/products"}
+            url={"https://young-beach-37066.herokuapp.com/products/?limit=6"}
           />
         )}
       </div>

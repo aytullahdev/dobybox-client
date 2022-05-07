@@ -15,6 +15,7 @@ import Blogs from "./Components/Blogs/Blogs";
 import Notfound from "./Components/Errorpage/Notfound";
 import Updateproduct from "./Components/Product/Updateproduct";
 import Passwordreset from "./Components/User/Passwordreset";
+import Forbidden from "./Components/Errorpage/Forbidden"
 function App() {
   
   return (
@@ -27,7 +28,7 @@ function App() {
           path="/inventory"
           element={
             <Requerdauth>
-              <Allinventoris />
+              <Allinventoris url="https://young-beach-37066.herokuapp.com/products" />
             </Requerdauth>
           }
         />
@@ -74,7 +75,9 @@ function App() {
         />
         <Route path="update/:id" element={<Requerdauth><Updateproduct/></Requerdauth>}/>
         <Route path="/pwdreset" element={<Notrequerauth><Passwordreset/></Notrequerauth>}/>
+        <Route path="/unauthorized" element={<Forbidden/>}/>
         <Route path="*" element={<Notfound/>}/>
+
       </Routes>
       <ToastContainer
         position="bottom-right"

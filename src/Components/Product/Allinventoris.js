@@ -3,9 +3,9 @@ import Productcard from "./Productcard";
 import Progress from "../Header/Progress";
 import { Link } from "react-router-dom";
 import useGetproduct from "../Hooks/useGetproduct";
-const Allinventoris = () => {
+const Allinventoris = ({url}) => {
   const [products] = useGetproduct(
-    "https://young-beach-37066.herokuapp.com/products"
+     url
   );
   return (
     <div className="px-5 py-5 lg:px-10 overflow-x-hidden">
