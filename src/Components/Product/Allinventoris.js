@@ -8,7 +8,7 @@ const Allinventoris = ({url}) => {
      url
   );
   return (
-    <div className="px-5 py-5 lg:px-10 overflow-x-hidden">
+    <div className="px-5 py-5 lg:px-10 min-h-screen overflow-x-hidden relative">
       <div className="py-4">
         <h1 className="text-3xl">ALL PRODUCTS</h1>
         <input
@@ -18,7 +18,7 @@ const Allinventoris = ({url}) => {
         />
       </div>
       {products.length === 0 && <div>No Product</div>}
-      {!products.length > 0 && <Progress />}
+      {products.length ===0 && <Progress/>}
       {products.length > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 ">
           {products.length > 0 &&

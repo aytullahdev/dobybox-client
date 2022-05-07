@@ -4,7 +4,7 @@ import Addproduct from "../Product/Addproduct";
 import Manaageallproduct from "./Manaageallproduct";
 
 const Manageinventory = () => {
-  const [showmpro, setshowmpro] = useState(false);
+  const [showmpro, setshowmpro] = useState(true);
   return (
     <>
         <div className="flex items-center justify-center space-x-4 py-3">
@@ -29,7 +29,7 @@ const Manageinventory = () => {
         {!showmpro && <Addproduct />}
         {showmpro && (
           <Manaageallproduct
-            url={"https://young-beach-37066.herokuapp.com/products/?limit=6"}
+            url={"https://young-beach-37066.herokuapp.com/products"}
           />
         )}
       </div>

@@ -22,7 +22,9 @@ function useGetproduct(url) {
           console.log(res.status);
         })
         .then((data) => {
-          setProducts(data);
+         
+           setProducts(data);
+          
         })
         .catch((err) => {});
     } catch (err) {
@@ -35,6 +37,7 @@ function useGetproduct(url) {
   const Reload = () => {
     loadData(url);
   };
+ 
   return [products, Reload];
 }
 export default useGetproduct;

@@ -107,6 +107,13 @@ const Singleproductmanage = ({
         >
           Delete
         </button>
+        <Link
+          to={`/inventory/${id}`}
+          className="btn btn-primary text-white btn-xs ml-2"
+        >
+        Details
+
+        </Link>
       </th>
     </tr>
   );
