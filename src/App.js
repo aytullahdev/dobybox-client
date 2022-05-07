@@ -17,6 +17,7 @@ import Updateproduct from "./Components/Product/Updateproduct";
 import Passwordreset from "./Components/User/Passwordreset";
 import Forbidden from "./Components/Errorpage/Forbidden"
 import Footer from "./Components/Footer/Footer";
+import Dashboard from "./Components/User/Dashboard";
 function App() {
   
   return (
@@ -66,6 +67,7 @@ function App() {
             </Notrequerauth>
           }
         />
+        <Route path="/dashboard" element={<Requerdauth><Dashboard/></Requerdauth>}/>
         <Route
           path="/manageinventory"
           element={
