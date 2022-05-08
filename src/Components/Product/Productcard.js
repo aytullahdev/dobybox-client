@@ -7,8 +7,8 @@ const Productcard = ({name,id,desc,price,quan,supplier,img}) => {
      initial={{opacity:0,x:'100vw'}}
      animate={{opacity:1,x:0}}
      transition={{delay:0.5}}
-    className="mx-auto w-full">
-      <div className="card  bg-base-100 shadow-xl">
+    className="mx-auto w-full ">
+      <div className="card  bg-base-100 dark:bg-slate-600 shadow-xl">
         <figure>
           <img
             src={img}

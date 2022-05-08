@@ -8,8 +8,8 @@ const Manaageallproduct = ({ url }) => {
     <div className="px-5 relative">
       <div className="overflow-x-auto w-full">
         
-        {products === 0 && <div>No Product</div>}
-        {products.length ===0 && <Progress/>}
+        {products.length === 0 && <div className="px-5 text-3xl font-bold">No Product</div>}
+        {products.length === 0 && <Progress/>}
         {products.length > 0 && (
           <table className="table w-full my-5">
             <thead>

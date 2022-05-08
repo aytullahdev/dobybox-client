@@ -51,7 +51,7 @@ const Addproduct = () => {
   return (
     <motion.div>
       <div className="mt-5">
-        <h2 className="text-center text-3xl text-gray-500  capitalize">
+        <h2 className="text-center text-3xl dark:text-white uppercase text-gray-500  ">
           Add Product
         </h2>
       </div>

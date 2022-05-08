@@ -2,7 +2,7 @@ import React from 'react';
 
 const Blogs = () => {
     return (
-        <div>
+        <div className='dark:text-white'>
            <div className='w-3/4 mx-auto py-5 '>
                <h1 className='text-3xl uppercase pb-3 font-bold' >Difference between Javascript and nodeJS?</h1>
                <p className='text-2xl capitalize'>

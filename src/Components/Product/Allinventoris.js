@@ -8,7 +8,7 @@ const Allinventoris = ({url}) => {
      url
   );
   return (
-    <div className="px-5 py-5 lg:px-10 min-h-screen overflow-x-hidden relative">
+    <div className="px-5 dark:bg-gray-700 dark:text-white py-5 lg:px-10 min-h-screen overflow-x-hidden relative">
       <div className="py-4">
         <h1 className="text-3xl">ALL PRODUCTS</h1>
         <input

@@ -15,84 +15,106 @@ import Blogs from "./Components/Blogs/Blogs";
 import Notfound from "./Components/Errorpage/Notfound";
 import Updateproduct from "./Components/Product/Updateproduct";
 import Passwordreset from "./Components/User/Passwordreset";
-import Forbidden from "./Components/Errorpage/Forbidden"
+import Forbidden from "./Components/Errorpage/Forbidden";
 import Footer from "./Components/Footer/Footer";
 import Dashboard from "./Components/User/Dashboard";
+import { useState } from "react";
 function App() {
-  
+  const [dark, setDark] = useState(false);
   return (
-    <div className="App">
-      <Navbar />
+    <div className={`${dark ? "dark" : ""}`}>
+      <div className={`dark:bg-gray-700 `}>
+        <Navbar setDark={setDark} dark={dark} />
 
-      <Routes>
-        <Route path="/" element={<Header />} />
-        <Route
-          path="/inventory"
-          element={
-            <Requerdauth>
-              <Allinventoris url="https://young-beach-37066.herokuapp.com/products" />
-            </Requerdauth>
-          }
+        <Routes>
+          <Route path="/" element={<Header />} />
+          <Route
+            path="/inventory"
+            element={
+              <Requerdauth>
+                <Allinventoris url="https://young-beach-37066.herokuapp.com/products" />
+              </Requerdauth>
+            }
+          />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route
+            path="/inventory/:id"
+            element={
+              <Requerdauth>
+                <Singleproductmanage />
+              </Requerdauth>
+            }
+          />
+          <Route
+            path="/myitems"
+            element={
+              <Requerdauth>
+                <Myitems />
+              </Requerdauth>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <Notrequerauth>
+                <Login />
+              </Notrequerauth>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <Notrequerauth>
+                <Signup />
+              </Notrequerauth>
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <Requerdauth>
+                <Dashboard />
+              </Requerdauth>
+            }
+          />
+          <Route
+            path="/manageinventory"
+            element={
+              <Requerdauth>
+                <Manageinventory />
+              </Requerdauth>
+            }
+          />
+          <Route
+            path="update/:id"
+            element={
+              <Requerdauth>
+                <Updateproduct />
+              </Requerdauth>
+            }
+          />
+          <Route
+            path="/pwdreset"
+            element={
+              <Notrequerauth>
+                <Passwordreset />
+              </Notrequerauth>
+            }
+          />
+          <Route path="/unauthorized" element={<Forbidden />} />
+          <Route path="*" element={<Notfound />} />
+        </Routes>
+        <Footer />
+        <ToastContainer
+          position="bottom-right"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          draggable
         />
-        <Route path="/blogs" element={<Blogs />} />
-        <Route
-          path="/inventory/:id"
-          element={
-            <Requerdauth>
-              <Singleproductmanage />
-            </Requerdauth>
-          }
-        />
-        <Route
-          path="/myitems"
-          element={
-            <Requerdauth>
-              <Myitems />
-            </Requerdauth>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <Notrequerauth>
-              <Login />
-            </Notrequerauth>
-          }
-        />
-        <Route
-          path="/signup"
-          element={
-            <Notrequerauth>
-              <Signup />
-            </Notrequerauth>
-          }
-        />
-        <Route path="/dashboard" element={<Requerdauth><Dashboard/></Requerdauth>}/>
-        <Route
-          path="/manageinventory"
-          element={
-            <Requerdauth>
-              <Manageinventory />
-            </Requerdauth>
-          }
-        />
-        <Route path="update/:id" element={<Requerdauth><Updateproduct/></Requerdauth>}/>
-        <Route path="/pwdreset" element={<Notrequerauth><Passwordreset/></Notrequerauth>}/>
-        <Route path="/unauthorized" element={<Forbidden/>}/>
-        <Route path="*" element={<Notfound/>}/>
-
-      </Routes>
-      <Footer/>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        draggable
-      />
-      
+      </div>
     </div>
   );
 }

@@ -66,7 +66,7 @@ const Updateproduct = () => {
     return (
       <motion.div>
         <div className="mt-5">
-          <h2 className="text-center text-3xl text-gray-500  capitalize">
+          <h2 className="text-center text-3xl text-gray-500  uppercase dark:text-white">
             Update Product
           </h2>
         </div>

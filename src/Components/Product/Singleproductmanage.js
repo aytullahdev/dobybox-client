@@ -97,7 +97,7 @@ const Singleproductmanage = () => {
         {sp && (
           <div>
             <div className="mx-auto">
-              <div className="card w-3/4 mx-auto bg-base-100 shadow-xl">
+              <div className="card dark:bg-gray-700 dark:text-white w-3/4 mx-auto bg-base-100 dark:shadow-none shadow-xl">
                
                 <div className="card-body">
                   <h2 className="card-title">

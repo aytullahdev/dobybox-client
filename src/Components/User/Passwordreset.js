@@ -14,7 +14,7 @@ const Passwordreset = () => {
        if(!error){toast("Reset Password Link sended")}
   }
   return (
-    <div className="mx-auto  w-full flex py justify-center items-center">
+    <div className="mx-auto min-h-screen  w-full flex py justify-center ">
       <div>
         <input
           type="text"

@@ -4,23 +4,23 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import {  signOut } from 'firebase/auth';
 import auth from '../../../Firebase/firebase.init'
 import pimg from './blank-profile-picture-g43042f5b5_640.png';
-const Navbar = () => {
+const Navbar = ({setDark,dark}) => {
   const [user] = useAuthState(auth);
   const logout = () => {
     signOut(auth);
   };
  
   return (
-    <div className="px-1 lg:px-10 z-50  py-2">
-      <div className="navbar bg-base-100 rounded-lg shadow-md">
+    <div  className="px-1 lg:px-10 z-50  py-2">
+      <div className="navbar bg-base-100 dark:text-white dark:bg-black rounded-lg shadow-md">
         <div className="flex-1">
-          <Link to="/" className="btn outline-none border-none normal-case text-xl bg-blue-400 text-white">
+          <Link to="/" className="btn outline-none border-none normal-case text-xl bg-blue-400 dark:bg-white dark:text-gray-500 text-white">
             DOBYBOX
           </Link>
         </div>
        
         <div>
-          <div className="navbar bg-base-100">
+          <div className="navbar bg-base-100 dark:bg-black dark:text-white">
             <div className="navbar-start">
               <div className="dropdown">
                 <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -41,7 +41,7 @@ const Navbar = () => {
                 </label>
                 <ul
                   tabIndex="0"
-                  className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                  className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 dark:text-white dark:bg-black"
                 >
                   <li>
                   <Link to="/">Home</Link>
@@ -95,7 +95,7 @@ const Navbar = () => {
           </div>
         </div>
         {user &&
-        <div className="flex-none mr-2">
+        <div className="flex-none mr-2 dark:text-black">
           <div className="dropdown dropdown-end">
             <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
@@ -123,8 +123,8 @@ const Navbar = () => {
         </div>
         }
         <div>
-          <label className="swap swap-rotate">
-            <input type="checkbox" />
+          <label className="swap swap-rotate dark:text-white">
+            <input type="checkbox" onClick={()=>{setDark(!dark)}} />
 
             <svg
               className="swap-on fill-current w-10 h-10"
